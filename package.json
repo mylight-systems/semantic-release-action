@@ -1,6 +1,6 @@
 {
   "name": "semantic-release-action",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Runs semantic-release and exports variables to use in subsequent actions",
   "source": "src/main.ts",
   "main": "dist/index.js",
