@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Publish
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Check lint
+        run: yarn lint
+
+      - name: Release
+        id: release
+        uses: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.CI_GH_TOKEN }}
+
+      - name: Dump release outputs
+        run: |
+          echo "${OUTPUTS}"
+        env:
+          OUTPUTS: ${{ toJson(steps.release.outputs) }}
