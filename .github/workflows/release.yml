@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  publish:
-    name: Publish
+  release:
+    name: Release
 
     runs-on: ubuntu-latest
 
@@ -38,3 +38,16 @@ jobs:
           echo "${OUTPUTS}"
         env:
           OUTPUTS: ${{ toJson(steps.release.outputs) }}
+
+      - name: Add major tag
+        if: steps.release.outputs.published == 'true'
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+          git pull
+
+          git tag -a "v${MAJOR}" -m "v${MAJOR}" -f
+          git push -f origin "v${MAJOR}"
+        env:
+          MAJOR: ${{ steps.release.outputs.major }}
