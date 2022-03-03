@@ -2,6 +2,26 @@ name: 'Semantic Release Action'
 
 description: 'Runs semantic-release and exports variables to use in subsequent actions'
 
+outputs:
+  published:
+    description: "Either `'true'` when a new release was published or `'false'` when no release was published"
+  type:
+    description: "The new releases' type, either `'patch'`, `'minor'` or `'major'`"
+  version:
+    description: "The new releases' semantic version, i.e. `'1.8.3'`"
+  major:
+    description: "The new releases' major version number, i.e. `'1'`"
+  minor:
+    description: "The new releases' minor version number, i.e. `'8'`"
+  patch:
+    description: "The new releases' patch version number, i.e. `'3'`"
+  git-tag:
+    description: "The new releases' Git tag, i.e. `'v1.8.3'`"
+  notes:
+    description: "The new releases' notes"
+  channel:
+    description: "The new releases' distribution channel (undefined for the default distribution channel), i.e. `'beta'`"
+
 runs:
   using: 'node16'
   main: 'src/main.js'
