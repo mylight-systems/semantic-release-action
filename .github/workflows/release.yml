@@ -27,6 +27,9 @@ jobs:
       - name: Check lint
         run: yarn lint
 
+      - name: Build
+        run: yarn build
+
       - name: Release
         id: release
         uses: ./

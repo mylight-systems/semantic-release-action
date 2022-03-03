@@ -11,5 +11,8 @@ yarn-error.log*
 # Dependencies
 node_modules
 
+# Build
+dist
+
 # Yarn Integrity file
 .yarn-integrity
