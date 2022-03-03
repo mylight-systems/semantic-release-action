@@ -1,20 +1,10 @@
-const core = require('@actions/core');
-const semanticRelease = require('semantic-release');
+import * as core from '@actions/core';
+import semanticRelease from 'semantic-release';
 
-const Output = {
-  PUBLISHED: 'published',
-  TYPE: 'type',
-  VERSION: 'version',
-  MAJOR: 'major',
-  MINOR: 'minor',
-  PATCH: 'patch',
-  GIT_TAG: 'git-tag',
-  NOTES: 'notes',
-  CHANNEL: 'channel',
-};
+import { Output } from './constants';
 
-async function run() {
-  const release = await semanticRelease();
+export async function run(): Promise<void> {
+  const release = await semanticRelease({});
 
   if (!release) {
     core.info('No release published');
@@ -47,7 +37,3 @@ async function run() {
   core.setOutput(Output.NOTES, notes);
   core.setOutput(Output.CHANNEL, channel);
 }
-
-run().catch(error => {
-  core.setFailed(error.message);
-});
