@@ -1,0 +1,7 @@
+name: 'Semantic Release Action'
+
+description: 'Runs semantic-release and exports variables to use in subsequent actions'
+
+runs:
+  using: 'node16'
+  main: 'src/main.js'

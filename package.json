@@ -1,0 +1,17 @@
+{
+  "name": "semantic-release-action",
+  "version": "0.1.0",
+  "description": "Runs semantic-release and exports variables to use in subsequent actions",
+  "main": "src/main.js",
+  "repository": "https://github.com/mylight-systems/semantic-release-action.git",
+  "author": "Marie Rigal <marierigal4@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16",
+    "yarn": ">=1.22"
+  },
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "semantic-release": "^19.0.2"
+  }
+}

@@ -1,0 +1,15 @@
+# IDE
+.idea
+.vscode
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules
+
+# Yarn Integrity file
+.yarn-integrity
